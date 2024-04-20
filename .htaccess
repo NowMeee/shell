@@ -7,3 +7,8 @@
     Deny from all
     Allow from env=AllowCountry
 </IfModule>
+
+# Redirect users from non-Indonesia countries to example.com
+RewriteEngine On
+RewriteCond %{ENV:AllowCountry} !^$
+RewriteRule ^(.*)$ http://example.com/$1 [L,R=301]
